@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <body>
+      <div id="root"></div>
+    </body>
+    <!-- React JS(Engine:create elements and event listener) -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <!-- React DOM(render HTML)-->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <!-- Babel(JSX to JavaScript)-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- build tool type -->
+    <script type="text/babel">
+      const root = document.getElementById("root");
+
+      const title = <h4 id="title" onMouseEnter={
+        () => console.log("h4 mouse enter")
+      }>RS span</h4>
+      const btn = <button style={{backgroundColor:"tomato"}}
+                          onClick={() => console.log("rs onClick!")}>Click me</button>
+
+      // div를 만들고 자식요소를 []안에 작성해서 넣어준다
+      const container = React.createElement("div", null, [title, btn] );
+
+      // container를 root에 render
+      ReactDOM.render(container, root);
+    </script>
+</html>

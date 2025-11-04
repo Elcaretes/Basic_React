@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <body>
+      <div id="root"></div>
+    </body>
+    <!-- React JS(Engine:create elements and event listener) -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <!-- React DOM(render HTML)-->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script>
+      const root = document.getElementById("root");
+
+      /*
+       * react에서 property로 등록한 event는
+       * html에서는 보여지지않지만 동작함
+       * ReactJS는 on+event 형태는 event listener인것을 자동감지
+       */
+      const h4 = React.createElement("h4"
+                                      , {
+                                        onMouseEnter: () => console.log("h4 mouse enter")
+                                      }
+                                      , "RS span");
+      const btn = React.createElement("button", {
+        onClick: () => console.log("rs onClick!")
+        ,style: {
+            backgroundColor:"tomato"
+        }
+      }, "Click me");
+
+      // div를 만들고 자식요소를 []안에 작성해서 넣어준다
+      const container = React.createElement("div", null, [h4, btn] );
+
+      // container를 root에 render
+      ReactDOM.render(container, root);
+    </script>
+</html>
