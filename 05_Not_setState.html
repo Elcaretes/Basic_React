@@ -12,18 +12,23 @@
     <!-- build tool type -->
     <script type="text/babel">
       const root = document.getElementById("root");
+      let counter = 0;
+      function countUp(){
+        counter = counter + 1;
+        render();
+      }
 
-      const title = <h4 id="title" onMouseEnter={
-        () => console.log("h4 mouse enter")
-      }>h4 title</h4>
+      const render = ()=> (
+        ReactDOM.render(<Container/>, root)
+      )
 
-      const btn = <button style={{backgroundColor:"tomato"}}
-                          onClick={() => console.log("rs onClick!")}>Click me</button>
+      const Container = ()=> (
+        <div>
+          <h3>Total Clicks: {counter}</h3>
+          <button onClick={countUp}>Click!</button>
+        </div>
+      );
 
-      // div를 만들고 자식요소를 []안에 작성해서 넣어준다
-      const container = React.createElement("div", null, [title, btn] );
-
-      // container를 root에 render
-      ReactDOM.render(container, root);
+      render();
     </script>
 </html>

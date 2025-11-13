@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <body>
+      <div id="root"></div>
+    </body>
+    <!-- React JS(Engine:create elements and event listener) -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <!-- React DOM(render HTML)-->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <!-- Babel(JSX to JavaScript)-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- build tool type -->
+    <script type="text/babel">
+      const root = document.getElementById("root");
+
+      function Title(){
+        return (<h4 id="title" onMouseEnter={
+          () => console.log("h4 mouse enter")
+        }>h4 title</h4>);
+      }
+
+      const Btn = ()=> (<button style={{backgroundColor:"tomato"}}
+                          onClick={() => console.log("rs onClick!")}>Click me</button>);
+      
+
+      // React.createElement를 쓰지않고 개선된 방식
+      // 1. 컴포넌트의 첫글자는 반드시 대문자로 한다
+      // 2. JSX요소를 함수로 만들어준다.
+      //    function + return방식은 ()=> 화살표함수 방식과 같다. title과 btn은 같은방식
+      // const container = React.createElement("div", null, [title, btn] );
+      const Container = ()=> (<div>
+                          <Title/>
+                          <Btn/>
+                        </div>);
+
+      // container를 root에 render
+      // ReactDOM.render(Container, root);
+      ReactDOM.render(<Container/>, root);
+    </script>
+</html>
